@@ -14,6 +14,9 @@
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
           venvDir = ".venv";
+          env = {
+            PIP_INDEX_URL = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple";
+          };
           packages = with pkgs; [ python311 ] ++
             (with pkgs.python311Packages; [
               pip

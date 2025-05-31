@@ -42,6 +42,11 @@
           description = "Rust development environment";
         };
 
+        java = {
+          path = ./java;
+          description = "Java development environment";
+        };
+
         # Aliases
         c = c-cpp;
         cpp = c-cpp;

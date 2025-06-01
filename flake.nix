@@ -42,9 +42,9 @@
           description = "Rust development environment";
         };
 
-        java = {
-          path = ./java;
-          description = "Java development environment";
+        java-maven = {
+          path = ./java-maven;
+          description = "Java Maven development environment";
         };
 
         # Aliases

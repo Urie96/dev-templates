@@ -17,6 +17,7 @@ let
           maven = prev.maven.override { jdk_headless = jdk; };
           gradle = prev.gradle.override { java = jdk; };
           lombok = prev.lombok.override { inherit jdk; };
+          jdt-language-server = prev.jdt-language-server.override { inherit jdk; };
         }
       )
     ];
@@ -25,12 +26,10 @@ in
 pkgs.mkShellNoCC {
   packages = with pkgs; [
     gcc
-    gradle
     jdk
     maven
-    ncurses
-    patchelf
     zlib
+    jdt-language-server # lsp
   ];
 
   shellHook =

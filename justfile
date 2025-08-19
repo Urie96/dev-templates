@@ -1,6 +1,9 @@
 nixpkgs_target_commit := "fd487183437963a59ba763c0cc4f27e3447dd6dd"
 rust_overlay_target_commit := "10d4529b7ead35863caa77993915104345524bed"
 
+# curl https://api.github.com/repos/NixOS/nixpkgs/commits/nixos-25.05 | grep -m 1 '"sha":' | cut -d '"' -f 4
+# curl https://api.github.com/repos/oxalica/rust-overlay/commits/stable | grep -m 1 '"sha":' | cut -d '"' -f 4
+
 update:
     #!/usr/bin/env bash
     find . -type f -name "shell.nix" | while read -r file; do

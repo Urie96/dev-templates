@@ -47,6 +47,11 @@
           description = "Java Maven development environment";
         };
 
+        esp = {
+          path = ./esp;
+          description = "Esp-idf development environment";
+        };
+
         # Aliases
         c = c-cpp;
         cpp = c-cpp;

@@ -4,14 +4,17 @@ let
     config = { };
     overlays = [ ];
   };
+
+  python-with-pkg = pkgs.python312.withPackages (
+    ps: with ps; [
+      pip
+    ]
+  );
 in
 pkgs.mkShellNoCC {
   venvDir = ".venv";
-  packages =
-    with pkgs;
-    [ python311 ]
-    ++ (with pkgs.python311Packages; [
-      pip
-      venvShellHook
-    ]);
+  packages = [
+    python-with-pkg
+    python-with-pkg.pkgs.venvShellHook
+  ];
 }

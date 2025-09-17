@@ -3,15 +3,36 @@ let
   nixpkgs-esp-dev = fetchTarball "https://github.com/mirrexagon/nixpkgs-esp-dev/archive/52a23afb15a1643a3dbeeb963097945a3f35b0fb.tar.gz";
   pkgs = import nixpkgs {
     config = { };
-    overlays = [ ];
+    overlays = [ (import "${nixpkgs-esp-dev}/overlay.nix") ];
   };
-  esp-pkgs = import nixpkgs-esp-dev { pkgs = pkgs; };
+
+  mk-qoi-conv =
+    pythonPackage:
+    pythonPackage.buildPythonPackage rec {
+      pname = "qoi-conv";
+      version = "1.0.2";
+      src = pkgs.fetchPypi {
+        inherit pname version;
+        hash = "sha256-Fc97/jZOlHJOSkw8kD+i1pEMYAqNAAS08HZKdrRMKcE=";
+      };
+      dependencies = with pythonPackage; [
+        numpy
+        pillow
+      ];
+    };
+
+  esp-idf-full = pkgs.esp-idf-full.override {
+    extraPythonPackages =
+      p: with p; [
+        patch
+        pillow
+        (mk-qoi-conv p)
+      ];
+  };
 in
 
 pkgs.mkShell {
-  name = "esp-idf-full-shell";
-
-  buildInputs = with esp-pkgs; [
+  buildInputs = [
     esp-idf-full # esp32
     # esp8266-rtos-sdk # esp8266
   ];

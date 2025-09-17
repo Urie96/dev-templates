@@ -4,17 +4,16 @@ let
     config = { };
     overlays = [ ];
   };
-
-  python-with-pkg = pkgs.python312.withPackages (
-    ps: with ps; [
-      pip
-    ]
-  );
+  customPython = pkgs.python3.withPackages (p: with p; [ pip ]);
 in
 pkgs.mkShellNoCC {
   venvDir = ".venv";
-  packages = [
-    python-with-pkg
-    python-with-pkg.pkgs.venvShellHook
-  ];
+  packages =
+    (with customPython.pkgs; [
+      venvShellHook
+    ])
+    ++ (with pkgs; [
+      customPython
+      uv
+    ]);
 }

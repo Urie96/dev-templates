@@ -47,9 +47,14 @@
           description = "Java Maven development environment";
         };
 
-        esp = {
-          path = ./esp;
+        esp-idf = {
+          path = ./esp-idf;
           description = "Esp-idf development environment";
+        };
+
+        esp-rust = {
+          path = ./esp-rust;
+          description = "Esp Rust development environment";
         };
 
         # Aliases

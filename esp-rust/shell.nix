@@ -34,6 +34,10 @@ pkgs.mkShell {
     cargo-edit
     cargo-watch
     rust-analyzer
+
+    esp-generate
+    probe-rs-tools
+    espflash
   ];
 
   env = {

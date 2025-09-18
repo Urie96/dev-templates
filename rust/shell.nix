@@ -1,6 +1,6 @@
 let
   nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/archive/fd487183437963a59ba763c0cc4f27e3447dd6dd.tar.gz";
-  rust-overlay = fetchTarball "https://github.com/oxalica/rust-overlay/archive/10d4529b7ead35863caa77993915104345524bed.tar.gz";
+  rust-overlay = fetchTarball "https://github.com/oxalica/rust-overlay/archive/09442765a05c2ca617c20ed68d9613da92a2d96b.tar.gz";
   pkgs = import nixpkgs {
     config = { };
     overlays = [

@@ -57,6 +57,11 @@
           description = "Esp Rust development environment";
         };
 
+        zephyr = {
+          path = ./zephyr;
+          description = "Zephyr development environment";
+        };
+
         # Aliases
         c = c-cpp;
         cpp = c-cpp;

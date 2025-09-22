@@ -33,7 +33,7 @@ pkgs.mkShell {
     cargo-deny
     cargo-edit
     cargo-watch
-    rust-analyzer
+    # rust-analyzer
 
     esp-generate
     probe-rs-tools

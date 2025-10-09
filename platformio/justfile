@@ -1,0 +1,2 @@
+init:
+    pio project init --board seeed_xiao_esp32c6

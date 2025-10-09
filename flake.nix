@@ -62,6 +62,16 @@
           description = "Zephyr development environment";
         };
 
+        platformio = {
+          path = ./platformio;
+          description = "PlatformIO development environment";
+        };
+
+        arduino = {
+          path = ./arduino;
+          description = "Arduino development environment";
+        };
+
         # Aliases
         c = c-cpp;
         cpp = c-cpp;

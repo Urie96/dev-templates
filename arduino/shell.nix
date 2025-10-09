@@ -21,7 +21,17 @@ let
 in
 
 pkgs.mkShell {
-  packages = [
-    custom-arduino-cli
-  ];
+  packages =
+    [
+      custom-arduino-cli
+    ]
+    ++ (with pkgs; [
+      arduino-language-server
+      clang
+    ]);
+
+  shellHook = ''
+    arduino-cli config dump --json | ${pkgs.yq-go}/bin/yq -P >".arduino-cli.yaml"
+    export ARDUINO_CLI_CONFIG=".arduino-cli.yaml"
+  '';
 }
